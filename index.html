@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İsim 1 ve İsim 2 </title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <img src="images/orangePortal.jpg" id ="orangePortal">
+            <span class="orange">İsim 1 </span>
+            <span>ve</span>
+            <span class="blue">İsim 2</span>
+            <img src="images/bluePortal.jpg" id = "bluePortal">
+        </h1>
+        <h3>Onu sevdiğim süre:</h3>
+        <div id="timer"></div>
+        <div class="image-container">
+            <img class = "randomImage" id = "randomImage">
+        </div>
+    </div>
+
+    <script>
+        window.onload = getRandomPhoto;
+        var photos = [
+                "images/resim1.png",
+                "images/resim2.png",
+            ];
+
+        // Function to fetch a random photo
+        function getRandomPhoto() {
+            var randomIndex = Math.floor(Math.random() * photos.length);
+            document.getElementById("randomImage").src = photos[randomIndex];
+        }
+    </script>
+
+    <script>
+        var startDate = new Date('2023-02-04');
+
+        function updateTimer() {
+            var currentDate = new Date();
+            var elapsedTime = currentDate - startDate;
+            var seconds = Math.floor((elapsedTime / 1000) % 60);
+            var minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+            var hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24) % 365.25);
+            var years = Math.floor(elapsedTime / (1000 * 60 * 60 * 24 * 365.25));
+
+            // Display the elapsed time
+            document.getElementById('timer').innerHTML = years + " yıl, " + days + " gün, " + 
+                hours + " saat, " + minutes + " dakika, ve " + seconds + " saniye";
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+
+</body>
+
+<footer>
+    <a href="https://instagram.com/cheraphp"><img src="images/companionCube.png" id="companionCube"></a>
+</footer>
+
+</html>
